@@ -1,0 +1,103 @@
+SELECT *
+FROM dbo.['countries-table$']
+
+-- Top 10 with the highest population countries in 2023
+
+SELECT TOP(10)
+	country,
+	pop2023
+FROM dbo.['countries-table$']
+ORDER BY pop2023 DESC
+
+-- Population Trend Comparison: UK, USA, China, Japan, India  (1980-2050) 
+
+
+SELECT 
+	country,
+	pop1980,
+	pop2000,
+	pop2010,
+	pop2023,
+	pop2030,
+	pop2050
+FROM dbo.['countries-table$']
+WHERE country IN ('United Kingdom', 'United States', 'China', 'Japan', 'India') 
+ORDER BY country
+
+-- KPI’s of total population in 2023 and prediction sparkline charts of selected 4 countries. Compare UK, USA, China, Japan, India
+
+-- United Kingdom
+SELECT
+	pop1980,
+	pop2000,
+	pop2010,
+	pop2023,
+	pop2030,
+	pop2050
+FROM dbo.['countries-table$']
+WHERE country = 'United Kingdom'
+
+-- United States
+SELECT
+	pop1980,
+	pop2000,
+	pop2010,
+	pop2023,
+	pop2030,
+	pop2050
+FROM dbo.['countries-table$']
+WHERE country = 'United States'
+
+-- China
+SELECT
+	pop1980,
+	pop2000,
+	pop2010,
+	pop2023,
+	pop2030,
+	pop2050
+FROM dbo.['countries-table$']
+WHERE country = 'China'
+
+-- Japan
+SELECT
+	pop1980,
+	pop2000,
+	pop2010,
+	pop2023,
+	pop2030,
+	pop2050
+FROM dbo.['countries-table$']
+WHERE country = 'Japan'
+
+-- Population Growth Rate Distribution
+-- Countries with the lowest growth rate 
+
+SELECT top(5)
+	country,
+	growthrate*100 AS GrowthRate
+FROM dbo.['countries-table$']
+ORDER BY growthrate ASC
+
+
+
+
+
+-- Population World Map in 1980, 2000, 2010, 2023, 2030, 2050
+SELECT
+	country,
+	pop1980,
+	pop2000,
+	pop2010,
+	pop2023,
+	pop2030,
+	pop2050
+FROM dbo.['countries-table$']
+
+-- Growth Rate World Map
+
+SELECT
+	country,
+	(growthRate*100) as GrowthRate
+FROM dbo.['countries-table$']
+ORDER BY GrowthRate DESC
